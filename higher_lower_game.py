@@ -5,9 +5,9 @@ from random import randint
 
 def play_game(persona1, persona2):
     """Takes in the form of a dictionary, data of the two person and returns 1 if the user made a winning choice """
-    print(f"Compare A: {persona1['name']}, a {persona1['description']}, from {persona1['country']}.")
+    print(f"\033[96mCompare A:\033[0m {persona1['name']}, a {persona1['description']}, from {persona1['country']}.")
     print(vs)
-    print(f"Against B: {persona2['name']}, a {persona2['description']}, from {persona2['country']}.")
+    print(f"\033[96mAgainst B:\033[0m {persona2['name']}, a {persona2['description']}, from {persona2['country']}.")
     answer = compare_A_B(persona1, persona2)  # Compare the numer of followers of the two people
     choice = input("Who has more followers? Type 'A' or 'B': ")
     if choice.lower() == answer.lower():
@@ -54,10 +54,10 @@ while should_continue == 1:
     result = play_game(persona1, persona2)
     if result[0] == 0:  # if the user made a wrong choice
         should_continue = 0
-        print("Sorry, that's wrong, you lose.")
+        print("\033[91mSorry, that's wrong, you lose.\033[96m")
     else:  # if the choice was correct
         score += 1
-        print(f"You're right! Current Score: {score}")
+        print(f"\033[92mYou're right! Current Score: {score}\033[0m")
         if result[1] == 'A':
             persona2 = pick_account(dataset=data)
         else:
